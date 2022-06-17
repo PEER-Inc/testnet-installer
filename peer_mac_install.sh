@@ -116,7 +116,7 @@ dir=/opt
                 peerconnect 
                 exit 1 
     else
-            #installcmd	
+            installcmd	
             if [ -x /usr/local/bin/peer ]
        	        then
                 echo "peer is ready to run"
