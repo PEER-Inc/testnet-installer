@@ -13,11 +13,12 @@ if [ "$(id -u)" != "0" ]; then
 
 URS=$(echo $HOME)
 cd $URS
+        rm -rf $URS/peer-node-installer
         if [ ! -d $URS/peer-node-installer ]
             then
                 git clone  https://github.com/PEER-Inc/peer-node-installer.git 
         fi 
-
+        rm -rf $URS/.peer
         if [ ! -d $URS/.peer ]
             then
                 mkdir $URS/.peer
@@ -75,6 +76,7 @@ peercmd(){
             fi
             done
         num=$(( $RANDOM % 5 + 1 ))
+        echo $num
 case $num in
 	1)
 	peer --base-path /data/"${x}" --chain $URS/.peer/customSpecRaw.json --port 30333 --ws-external --rpc-external --rpc-cors all --no-telemetry --validator --rpc-methods Unsafe --name "${x}" --bootnodes /ip4/44.226.191.229/tcp/30333/p2p/12D3KooWQoXbnbm5ve83Pvjw2qAViW5DC6cNGMNHmomovCBxkjGY	
@@ -83,7 +85,7 @@ case $num in
 	peer --base-path /data/"${x}" --chain $URS/.peer/customSpecRaw.json --port 30333 --ws-external --rpc-external --rpc-cors all --no-telemetry --validator --rpc-methods Unsafe --name "${x}" --bootnodes /ip4/35.163.7.4/tcp/30333/p2p/12D3KooWSzCM3iq2XVSH3BbVTGkgHa3SmQAyX8pW5oNuzo2wWFvb
 		;;
 	3)
-	peer --base-path /data/"${x}" --chain $URS/.peer/customSpecRaw.json --port 30333 --ws-external --rpc-external --rpc-cors all --no-telemetry --validator --rpc-methods Unsafe  --name "${x}" --bootnodes /ip4/54.193.222.107/tcp/30333/p2p/12D3KooWMuZyczpFKfsPtjumVQD52bTYCgovu9fjSuDShbmDh9K5 
+	peer --base-path /data/"${x}" --chain $URS/.peer/customSpecRaw.json --port 30333 --ws-external --rpc-external --rpc-cors all --no-telemetry --validator --rpc-methods Unsafe  --name "${x}" --bootnodes /ip4/35.162.207.217/tcp/30333/p2p/12D3KooWPQgv1rbY94anxvdGkVq4fGvWnRZVnTudXQp6mbxX2ef1
 		;;
 	4)
 	peer --base-path /data/"${x}" --chain $URS/.peer/customSpecRaw.json  --port 30333 --ws-external --rpc-external --rpc-cors all --no-telemetry --validator --rpc-methods Unsafe --name "${x}" --bootnodes /ip4/54.151.34.111/tcp/30333/p2p/12D3KooWPJARcGrcQjjjbDawETmGUSA5NaiWvDtRkjNvjS1T3zMG
