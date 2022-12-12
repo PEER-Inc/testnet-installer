@@ -77,19 +77,19 @@ peercmd(){
         num=$(( $RANDOM % 5 + 1 ))
 case $num in
 	1)
-	peer --base-path /data/"${x}" --chain $URS/.peer/customSpecRaw.json --port 30333 --ws-external --rpc-external --rpc-cors all --no-telemetry --validator --rpc-methods Unsafe --name "${x}" --bootnodes /ip4/44.224.219.49/tcp/30333/p2p/12D3KooWNCsCnx8t3gjSNi7QasMD3RnH4bsAGPuvGgXyqUVmVzZv	
+	peer --base-path /data/"${x}" --chain $URS/.peer/customSpecRaw.json --port 30333 --ws-external --rpc-external --rpc-cors all --no-telemetry --validator --rpc-methods Unsafe --name "${x}" --bootnodes /ip4/44.226.191.229/tcp/30333/p2p/12D3KooWQoXbnbm5ve83Pvjw2qAViW5DC6cNGMNHmomovCBxkjGY	
 		;;
 	2)
-	peer --base-path /data/"${x}" --chain $URS/.peer/customSpecRaw.json --port 30333 --ws-external --rpc-external --rpc-cors all --no-telemetry --validator --rpc-methods Unsafe --name "${x}" --bootnodes /ip4/3.98.162.251/tcp/30333/p2p/12D3KooWFjvYnJMiCdESbcxhcrYA9WgtvCRZqJVVCazE4ccXbQQZ
+	peer --base-path /data/"${x}" --chain $URS/.peer/customSpecRaw.json --port 30333 --ws-external --rpc-external --rpc-cors all --no-telemetry --validator --rpc-methods Unsafe --name "${x}" --bootnodes /ip4/35.163.7.4/tcp/30333/p2p/12D3KooWSzCM3iq2XVSH3BbVTGkgHa3SmQAyX8pW5oNuzo2wWFvb
 		;;
 	3)
-	peer --base-path /data/"${x}" --chain $URS/.peer/customSpecRaw.json --port 30333 --ws-external --rpc-external --rpc-cors all --no-telemetry --validator --rpc-methods Unsafe  --name "${x}" --bootnodes /ip4/52.221.105.119/tcp/30333/p2p/12D3KooWAuZ626pbeivT3CfF5yk26aAdD4apZHCW6ftzz1hJCrcS 
+	peer --base-path /data/"${x}" --chain $URS/.peer/customSpecRaw.json --port 30333 --ws-external --rpc-external --rpc-cors all --no-telemetry --validator --rpc-methods Unsafe  --name "${x}" --bootnodes /ip4/54.193.222.107/tcp/30333/p2p/12D3KooWMuZyczpFKfsPtjumVQD52bTYCgovu9fjSuDShbmDh9K5 
 		;;
 	4)
-	peer --base-path /data/"${x}" --chain $URS/.peer/customSpecRaw.json  --port 30333 --ws-external --rpc-external --rpc-cors all --no-telemetry --validator --rpc-methods Unsafe --name "${x}" --bootnodes /ip4/3.109.243.150/tcp/30333/p2p/12D3KooWQn9w8AdBSBkUkAkSjK4TDcZT8LB2pfT8FUr1CAqsfBtE
+	peer --base-path /data/"${x}" --chain $URS/.peer/customSpecRaw.json  --port 30333 --ws-external --rpc-external --rpc-cors all --no-telemetry --validator --rpc-methods Unsafe --name "${x}" --bootnodes /ip4/54.151.34.111/tcp/30333/p2p/12D3KooWPJARcGrcQjjjbDawETmGUSA5NaiWvDtRkjNvjS1T3zMG
 		;;
 	5)
-	peer --base-path /data/"${x}" --chain $URS/.peer/customSpecRaw.json --port 30333 --ws-external --rpc-external --rpc-cors all --no-telemetry --validator --rpc-methods Unsafe --name "${x}" --bootnodes /ip4/15.188.249.191/tcp/30333/p2p/12D3KooWMBSafZwTdxcBnuWyaNWBqsBrjzazc6B8PqRXtQXL8iCc
+	peer --base-path /data/"${x}" --chain $URS/.peer/customSpecRaw.json --port 30333 --ws-external --rpc-external --rpc-cors all --no-telemetry --validator --rpc-methods Unsafe --name "${x}" --bootnodes /ip4/52.8.49.96/tcp/30333/p2p/12D3KooWSQvqso1VYppX1nowqukwE9dQSM2GLordeBumE8PXLLXG
 		;;
 esac
 }
