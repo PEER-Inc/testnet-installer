@@ -90,7 +90,7 @@ peercmd(){
                  echo "Please enter your node name it can't be null"
             fi
             done
-        num=$(( $RANDOM % 5 + 1 ))
+        num=$(( ( RANDOM % 5 )  + 1 ))
          echo $num
 case $num in
 	1)
