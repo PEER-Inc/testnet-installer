@@ -3,54 +3,69 @@ if [ "$(id -u)" != "0" ];
     then  
         echo "This script must be run as root or with sudo cmd" 1>&2  
         exit 1  
-    else
+else
+    URS=$(echo $HOME)
+    installcmd() {
+    
+        if ! which git > /dev/null 2>&1; 
+            then
+                cd $URS
+                brew update -y && brew install git -y
+        fi
         URS=$(echo $HOME)
-        installcmd() {
-        
-            if ! which git > /dev/null 2>&1; 
-                then
-                    cd $URS
-                    brew update -y && brew install git -y
+        cd $URS
+    
+        if [ ! -d $URS/peer-node-installer ]
+            then
+                git clone  https://github.com/PEER-Inc/peer-node-installer.git
+	            cd  $URS/peer-node-installer  
+	            git checkout Mac_Binary
+        else
+	        cd  $URS/peer-node-installer 
+            echo "Loooking for latest binary updates"
+            git fetch
+            status=$(git diff origin/Mac_Binary)
+            if [ ! -z "$res" ] 
+                then 
+                    echo "New updates are found in binary. Would you like to update it (Y/N): "
+                    read x
+                    if [ "$x" == "Y" ] 
+                        then
+                            git pull origin Mac_Binary
+                            echo "Binary Updated"
+                    fi
+            else
+                echo "No new update found"
             fi
-
-            URS=$(echo $HOME)
-            cd $URS
-        
-            if [ ! -d $URS/peer-node-installer ]
+        fi 
+        if [ ! -d $URS/.peer ]
+            then
+                mkdir $URS/.peer
+                cd $URS/peer-node-installer
+                cp  customSpecRaw.json $URS/.peer/customSpecRaw.json
+                chmod +x peer
+                if [ -d /usr/local/bin/ ]
+   	                then
+                        cp peer /usr/local/bin/
+                else
+                    mkdir -p /usr/local/bin/
+                    cp peer /usr/local/bin/
+                fi
+        else
+	        echo $PWD
+            if [ ! -f $URS/.peer/customSpecRaw.json ]
                 then
-                    git clone  https://github.com/PEER-Inc/peer-node-installer.git
- 		            cd  $URS/peer-node-installer  
-		            git checkout Mac_Binary
-            fi 
-
-            if [ ! -d $URS/.peer ]
-                then
-                    mkdir $URS/.peer
                     cd $URS/peer-node-installer
-                    cp  customSpecRaw.json $URS/.peer/customSpecRaw.json
+                    mv  customSpecRaw.json $URS/.peer/customSpecRaw.json
                     chmod +x peer
                     if [ -d /usr/local/bin/ ]
-       	                then
+   	                    then
                             cp peer /usr/local/bin/
                     else
                         mkdir -p /usr/local/bin/
                         cp peer /usr/local/bin/
                     fi
-            else
-		        echo $PWD
-                if [ ! -f $URS/.peer/customSpecRaw.json ]
-                    then
-                        cd $URS/peer-node-installer
-                        mv  customSpecRaw.json $URS/.peer/customSpecRaw.json
-                        chmod +x peer
-                        if [ -d /usr/local/bin/ ]
-       	                    then
-                                cp peer /usr/local/bin/
-                        else
-                            mkdir -p /usr/local/bin/
-                            cp peer /usr/local/bin/
-                        fi
-                fi      
+            fi      
         fi
     }
  

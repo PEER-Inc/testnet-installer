@@ -17,6 +17,23 @@ else
         if [ ! -d $URS/peer-node-installer ]
             then
                 git clone  https://github.com/PEER-Inc/peer-node-installer.git 
+        else
+ 		    cd  $URS/peer-node-installer 
+            echo "Loooking for latest binary updates"
+            git fetch
+            status=$(git diff origin/master)
+            if [ ! -z "$res" ] 
+                then 
+                    echo "New updates are found in binary. Would you like to update it (Y/N): "
+                    read x
+                    if [ "$x" == "Y" ] 
+                        then
+                            git pull origin master
+                            echo "Binary Updated"
+                    fi
+            else
+                echo "No new update found"
+            fi
         fi 
         if [ ! -d $URS/.peer ]
             then
